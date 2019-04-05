@@ -1,23 +1,28 @@
 package VISTA;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import APP.MetodoakVista;
 
 public class Leihoa1 extends JFrame {
 
+	private ActionListener al;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField textField = new JTextField();
+	private JPasswordField passwordField = new JPasswordField();;
+	private JButton btnAurrera = new JButton("AURRERA");
+	private JLabel lblUsuario = new JLabel("USUARIO");
 
 	/**
 	 * Create the frame.
@@ -30,16 +35,21 @@ public class Leihoa1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnAurrera = new JButton("AURRERA");
+		btnAurrera.setFont(new Font("Tahoma", Font.BOLD, 15));
+		al = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MetodoakVista.bigarrenera();
+				dispose();
+			}
+		};
+		btnAurrera.addActionListener(al);
 		btnAurrera.setBounds(345, 238, 89, 23);
 		contentPane.add(btnAurrera);
 		
-		textField = new JTextField();
 		textField.setBounds(164, 46, 215, 34);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblUsuario = new JLabel("USUARIO");
 		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setBounds(22, 46, 100, 34);
@@ -51,7 +61,6 @@ public class Leihoa1 extends JFrame {
 		lblPasahitza.setBounds(22, 122, 100, 34);
 		contentPane.add(lblPasahitza);
 		
-		passwordField = new JPasswordField();
 		passwordField.setBounds(164, 124, 215, 34);
 		contentPane.add(passwordField);
 	}
